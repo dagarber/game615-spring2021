@@ -16,38 +16,44 @@ public class move : MonoBehaviour
         //Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
         float moveSpeed = 10.0f;
-        float rotateSpeed = 20.0f;
+        float rotateSpeed = 50.0f;
 
         // TRANSLATE
 
         if (Input.GetKey(KeyCode.W))
         {
-            gameObject.transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+           // gameObject.transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+              gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            gameObject.transform.position -= Vector3.forward * moveSpeed * Time.deltaTime;
+            //gameObject.transform.position -= Vector3.forward * moveSpeed * Time.deltaTime;
+            gameObject.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            gameObject.transform.position -= Vector3.left * moveSpeed * Time.deltaTime;
+            //gameObject.transform.position -= Vector3.left * moveSpeed * Time.deltaTime;
+            gameObject.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            gameObject.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+            //gameObject.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+            gameObject.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            gameObject.transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+            //gameObject.transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+            gameObject.transform.Translate(Vector3.up * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            gameObject.transform.position -= Vector3.up * moveSpeed * Time.deltaTime;
+            //gameObject.transform.position -= Vector3.up * moveSpeed * Time.deltaTime;
+            gameObject.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime, Space.Self);
         }
 
 
@@ -55,22 +61,30 @@ public class move : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            gameObject.transform.Rotate(-1.0f * rotateSpeed * Time.deltaTime, 0.0f, 0.0f);
+            //gameObject.transform.Rotate(-1.0f * rotateSpeed * Time.deltaTime, 0.0f, 0.0f);
+            //gameObject.transform.Rotate(gameObject.transform.right, -1.0f * rotateSpeed * Time.deltaTime);
+            gameObject.transform.Rotate(Vector3.right, -1.0f * rotateSpeed * Time.deltaTime, Space.Self); // Space.Self is default
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            gameObject.transform.Rotate(rotateSpeed * Time.deltaTime, 0.0f, 0.0f);
+            //gameObject.transform.Rotate(rotateSpeed * Time.deltaTime, 0.0f, 0.0f);
+            //gameObject.transform.Rotate(gameObject.transform.right, rotateSpeed * Time.deltaTime);
+            gameObject.transform.Rotate(Vector3.right, rotateSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            gameObject.transform.Rotate(0.0f, rotateSpeed * Time.deltaTime, 0.0f);
+            //gameObject.transform.Rotate(0.0f, rotateSpeed * Time.deltaTime, 0.0f);
+            //gameObject.transform.Rotate(gameObject.transform.up, rotateSpeed * Time.deltaTime);
+            gameObject.transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime, Space.World); // Space.World is the other option
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            gameObject.transform.Rotate(0.0f, -1.0f * rotateSpeed * Time.deltaTime, 0.0f);
+            //gameObject.transform.Rotate(0.0f, -1.0f * rotateSpeed * Time.deltaTime, 0.0f);
+            //gameObject.transform.Rotate(gameObject.transform.up, -1.0f * rotateSpeed * Time.deltaTime);
+            gameObject.transform.Rotate(Vector3.up, -1.0f * rotateSpeed * Time.deltaTime, Space.World);
         }
        
     }

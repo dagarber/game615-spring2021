@@ -24,6 +24,10 @@ public class SpawnSnowballs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject snowball = Instantiate(snowballPrefab, transform.position, transform.rotation);
+            Rigidbody rb = snowball.GetComponent<Rigidbody>();
+            rb.useGravity = true;
+            float launchForce = 3000f;
+            rb.AddForce(transform.forward * launchForce);
             //float speed = 3.0f; // must always declare type before a variable name
 
             //take target x,y,z minus source x,y,z to get the vector from source towards target
@@ -32,7 +36,7 @@ public class SpawnSnowballs : MonoBehaviour
             //vectorToTarget = vectorToTarget.normalized;
             //snowball.transform.forward = vectorToTarget;
 
-            snowball.transform.LookAt(cameraObj.transform); // multiply by -1 to move away
+            //snowball.transform.LookAt(cameraObj.transform); // multiply by -1 to move away
 
            // float launchForce = 300;
 

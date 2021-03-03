@@ -22,10 +22,10 @@ public class SnowballScript : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-            rb.useGravity = true;
-            float launchForce = -3000f;
-            rb.AddForce(transform.forward * launchForce);
+//            Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+//            rb.useGravity = true;
+//            float launchForce = 3000f;
+//            rb.AddForce(transform.forward * launchForce);
         }
 
         //transform.position = transform.position + transform.forward * speed * Time.deltaTime;
