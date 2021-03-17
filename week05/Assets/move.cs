@@ -22,7 +22,8 @@ public class move : MonoBehaviour
         if (gameObject.transform.position.z > 8)
         {
             //gameObject.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
-            gameObject.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 100.0f, Space.World);
+            //gameObject.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 100.0f, Space.World);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 8.0f);
             return;
         }
 
