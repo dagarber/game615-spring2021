@@ -18,12 +18,20 @@ public class move : MonoBehaviour
         float moveSpeed = 10.0f;
         float rotateSpeed = 50.0f;
 
+        // Prevent player from moving past first lillypad
+        if (gameObject.transform.position.z > 8)
+        {
+            //gameObject.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
+            gameObject.transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 100.0f, Space.World);
+            return;
+        }
+
         // TRANSLATE
 
         if (Input.GetKey(KeyCode.W))
         {
-           // gameObject.transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-              gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
+            // gameObject.transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+                gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -86,6 +94,7 @@ public class move : MonoBehaviour
             //gameObject.transform.Rotate(gameObject.transform.up, -1.0f * rotateSpeed * Time.deltaTime);
             gameObject.transform.Rotate(Vector3.up, -1.0f * rotateSpeed * Time.deltaTime, Space.World);
         }
+
        
     }
 }
