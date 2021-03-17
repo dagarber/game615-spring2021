@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - lilypad
+  - frog
   layers:
   - Default
   - TransparentFX

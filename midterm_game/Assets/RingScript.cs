@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RingScript : MonoBehaviour
 {
-	public bool startCheck = false; // private by default
+	public bool startCheck = false; // private by default, could also do 'public static bool' to create one variable for all instances
     public float bounceForce;
 
 	float moveTimer;

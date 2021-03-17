@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnowballScript : MonoBehaviour
 {
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,18 @@ public class SnowballScript : MonoBehaviour
         {
             // Different lillypads have different bounce forces assigned
             gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * collision.gameObject.GetComponent<RingScript>().bounceForce); // 1000.0f
+        }
+
+        if (collision.gameObject.CompareTag("frog"))
+        {
+            // Score the frog encounter
+            GameObject frog = collision.gameObject;
+            //if(frog.GetComponent<FrogFed>().frogFed == true)
+            //{
+            //    return;
+            //}
+            frog.GetComponent<FrogFed>().frogFed = true;
+
         }
     }
 }
