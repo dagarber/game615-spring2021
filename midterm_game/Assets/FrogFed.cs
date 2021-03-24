@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrogFed : MonoBehaviour
 {
 
     [HideInInspector] public bool frogFed = false;
+    public Text scoreText;
+    public Text attemptsText;
+    public Text leastText;
+    [HideInInspector] public int score = 0;
+    [HideInInspector] public int attempts = 0;
+    [HideInInspector] public int least = 0;
     public GameObject rewardText;
     public Material frogFedMat;
     float timer = 0;
@@ -13,6 +20,7 @@ public class FrogFed : MonoBehaviour
     float xInit;
     float yInit;
     float zInit;
+    bool firstAttempt = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +34,11 @@ public class FrogFed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(frogFed == false)
+        scoreText.text = score.ToString();
+        attemptsText.text = attempts.ToString();
+        leastText.text = least.ToString();
+
+        if (frogFed == false)
         {
             return;
         }
@@ -65,6 +77,8 @@ public class FrogFed : MonoBehaviour
 
             timer = 0;
 
+            attempts = 0;
+
             return;
         }
 
@@ -73,7 +87,18 @@ public class FrogFed : MonoBehaviour
         rewardText.SetActive(true);
         timer += Time.deltaTime;
 
-
+        if(firstAttempt)
+        {
+            least = attempts;
+            firstAttempt = false;
+        }
+        else
+        {
+            if(attempts<least)
+            {
+                least = attempts;
+            }
+        }
         
     }
 

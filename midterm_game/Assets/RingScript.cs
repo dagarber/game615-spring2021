@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RingScript : MonoBehaviour
 {
 	public bool startCheck = false; // private by default, could also do 'public static bool' to create one variable for all instances
-    public float bounceForce;
+    public int bounceForce;
+    public Text bounceForceText;
 
 	float moveTimer;
 	float moveTimerOrig;
@@ -33,6 +35,9 @@ public class RingScript : MonoBehaviour
     {
         //Decrement the timer, if it is less than zero, it is time to chenge directions!
         //Debug.Log(start);
+
+        bounceForceText.text = bounceForce.ToString();
+
         if (startCheck != true)
         {
             return;
@@ -55,11 +60,20 @@ public class RingScript : MonoBehaviour
 
     public void Reset()
     {
-        gameObject.transform.position = new Vector3(xInit, yInit, zInit);
-        moveTimerOrig = Random.Range(2.0f, 10.0f);
+        float posRangeX = Random.Range(2.0f, 10.0f);
+        float posRangeZ = Random.Range(2.0f, 10.0f);
         int[] posNeg = { -1, 1 };
+        int posOrNegIndexX = Random.Range(0, posNeg.Length);
+        int posOrNegIndexZ = Random.Range(0, posNeg.Length);
+        posRangeX *= posNeg[posOrNegIndexX];
+        posRangeZ *= posNeg[posOrNegIndexZ];
+        gameObject.transform.position = new Vector3(xInit + posRangeX, yInit, zInit + posRangeZ);
+        int bounceRange = Random.Range(5, 10);
+        bounceForce = 100*bounceRange;
+        moveTimerOrig = Random.Range(2.0f, 10.0f);
         int posOrNegIndex = Random.Range(0, posNeg.Length);
-        Debug.Log("The index value is:" + posOrNegIndex); //  print posOrNegIndex;
+        //Debug.Log("The index value is:" + posOrNegIndex); //  print posOrNegIndex;
+        Debug.Log("The bounce force is:" + bounceForce);
         moveSpeed *= posNeg[posOrNegIndex];
         moveTimer = moveTimerOrig / 2;
     }
