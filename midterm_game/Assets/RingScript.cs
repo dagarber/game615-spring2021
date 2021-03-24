@@ -10,10 +10,16 @@ public class RingScript : MonoBehaviour
 	float moveTimer;
 	float moveTimerOrig;
 	float moveSpeed = 0.05f;
+    float xInit;
+    float yInit;
+    float zInit;
 
 	// Start is called before the first frame update
 	void Start()
 	{
+        xInit = gameObject.transform.position.x;
+        yInit = gameObject.transform.position.y;
+        zInit = gameObject.transform.position.z;
 		moveTimerOrig = Random.Range(2.0f, 10.0f);
 		int[] posNeg = { -1, 1 };
 		int posOrNegIndex = Random.Range(0,posNeg.Length);
@@ -45,6 +51,17 @@ public class RingScript : MonoBehaviour
         transform.Translate(moveSpeed, 0, 0);
 
         moveTimer -= Time.deltaTime;
+    }
+
+    public void Reset()
+    {
+        gameObject.transform.position = new Vector3(xInit, yInit, zInit);
+        moveTimerOrig = Random.Range(2.0f, 10.0f);
+        int[] posNeg = { -1, 1 };
+        int posOrNegIndex = Random.Range(0, posNeg.Length);
+        Debug.Log("The index value is:" + posOrNegIndex); //  print posOrNegIndex;
+        moveSpeed *= posNeg[posOrNegIndex];
+        moveTimer = moveTimerOrig / 2;
     }
 
     // This was my first attempt at moving the lilypads, this approach did not work

@@ -9,11 +9,18 @@ public class FrogFed : MonoBehaviour
     public GameObject rewardText;
     public Material frogFedMat;
     float timer = 0;
+    private Material frogFedMatOrig;
+    float xInit;
+    float yInit;
+    float zInit;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        xInit = gameObject.transform.position.x;
+        yInit = gameObject.transform.position.y;
+        zInit = gameObject.transform.position.z;
+        frogFedMatOrig = gameObject.GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -27,9 +34,38 @@ public class FrogFed : MonoBehaviour
         if (timer > 5)
         {
             rewardText.SetActive(false);
-            Debug.Log("YES!");
+            //Debug.Log("YES!");
+            //return;
+            gameObject.GetComponent<MeshRenderer>().material = frogFedMatOrig;
+            frogFed = false;
+
+            GameObject[] GOs = GameObject.FindGameObjectsWithTag("snowball");
+            for (int i = 0; i < GOs.Length; i++)
+            {
+                GOs[i].SetActive(false);
+            }
+
+            GameObject[] GO1s = GameObject.FindGameObjectsWithTag("lilypad");
+            for (int i = 0; i < GO1s.Length; i++)
+            {
+                GO1s[i].GetComponent<RingScript>().Reset();
+            }
+
+            float posRangeX = Random.Range(2.0f, 10.0f);
+            float posRangeY = Random.Range(2.0f, 10.0f);
+            float posRangeZ = Random.Range(2.0f, 10.0f);
+            int[] posNeg = { -1, 1 };
+            int posOrNegIndexX = Random.Range(0, posNeg.Length);
+            int posOrNegIndexY = Random.Range(0, posNeg.Length);
+            int posOrNegIndexZ = Random.Range(0, posNeg.Length);
+            posRangeX *= posNeg[posOrNegIndexX];
+            posRangeY *= posNeg[posOrNegIndexY];
+            posRangeZ *= posNeg[posOrNegIndexZ];
+            gameObject.transform.position = new Vector3(xInit + posRangeX, yInit + posRangeY, zInit + posRangeZ);
+
+            timer = 0;
+
             return;
-            //frogFed = false;
         }
 
 

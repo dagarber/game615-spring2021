@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 2203390210922723111}
   - component: {fileID: -4320854176232947537}
   - component: {fileID: -2075506594490563322}
-  - component: {fileID: -1716962673400505144}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: snowball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,17 +138,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ace917c82e8e143ef969ea268105d018, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1716962673400505144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2203390210922723110}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 538113c7cc30440e2aea91d348925637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

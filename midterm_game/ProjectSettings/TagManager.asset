@@ -6,6 +6,7 @@ TagManager:
   tags:
   - lilypad
   - frog
+  - snowball
   layers:
   - Default
   - TransparentFX
