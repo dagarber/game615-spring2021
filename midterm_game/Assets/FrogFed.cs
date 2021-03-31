@@ -63,6 +63,12 @@ public class FrogFed : MonoBehaviour
                 GO1s[i].GetComponent<RingScript>().Reset();
             }
 
+            GameObject[] GO2s = GameObject.FindGameObjectsWithTag("scenery");
+            for (int i = 0; i < GO2s.Length; i++)
+            {
+                GO2s[i].GetComponent<ResetScript>().Reset();
+            }
+
             float posRangeX = Random.Range(2.0f, 10.0f);
             float posRangeY = Random.Range(2.0f, 10.0f);
             float posRangeZ = Random.Range(2.0f, 10.0f);

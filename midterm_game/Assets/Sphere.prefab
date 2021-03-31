@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -597521319923820054, guid: 470f5e015cbd546bb9d7aa269f8e6f14, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 0}
   snowballPrefab: {fileID: 3511277686349898265, guid: 4b3183ab5d55d4f56aa168f48c8d2e4e, type: 3}
+  launchForceText: {fileID: 0}
 --- !u!54 &-4320854176232947537
 Rigidbody:
   m_ObjectHideFlags: 0
